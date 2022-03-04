@@ -80,9 +80,9 @@ h50v-500h50v500h50
 <!-- end draw grid -->
     <defs>
         <g id="tree" transform="translate(-100,-50)">
-            <polygon points="100,100 65,150 135,150" fill="green" />
-            <polygon points="100,75 70,125 130,125" fill="green" />
-            <polygon points="100,50 75,100 125,100" fill="green" />
+            <polygon points="100,100 65,150 135,150" fill="#0DBE63" />
+            <polygon points="100,75 70,125 130,125" fill="#1EDB7A" />
+            <polygon points="100,50 75,100 125,100" fill="#33FF95" />
             <rect x="90" y="150" width="20" height="10" fill="brown" />
         </g>
     </defs>
