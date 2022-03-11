@@ -79,7 +79,7 @@ h50v-500h50v500h50
 </text>
 <!-- end draw grid -->
 <defs>
-    <g id="cloud">
+    <g id="cloud" transform="translate(0,-105)" >
         <circle cx="75" cy="150" r="45" fill="white" />
         <circle cx="140" cy="150" r="30" fill="white" />
         <circle cx="50" cy="200" r="50" fill="white" />
