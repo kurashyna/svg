@@ -79,7 +79,6 @@ h50v-500h50v500h50
 </text>
 <!-- end draw grid -->
 <defs>
-    
     <g id="tree" transform=")">
         <polygon points="100,100 65,150 135,150" fill="#0DBE63" />
         <polygon points="100,75 70,125 130,125" fill="#1EDB7A" />
@@ -87,7 +86,6 @@ h50v-500h50v500h50
         <rect x="90" y="150" width="20" height="10" fill="brown" />
         
     </g>
-
     <g id="snowyTree" transform="translate(-100,-50)" > 
         <use xlink:href="#tree"/>
         <polygon points="100,50, 83,85 118,85" fill="white" />
