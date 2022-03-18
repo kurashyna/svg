@@ -1,9 +1,6 @@
 <?xml version="1.0" standalone="no"?>
-<?xml-stylesheet type="text/css" href="handson.css" ?> 
-<svg xmlns="http://www.w3.org/2000/svg" width="750" height="500" viewBox="0 0 750 500" xmlns:xlink="http://www.w3.org/1999/xlink" >
-<rect class="background" x="0" y="0" width="750" height="500"  />
-
-
+<?xml-stylesheet type="text/css" href="handson.css" ?>
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="500" viewBox="-50 -50 750 750" xmlns:xlink="http://www.w3.org/1999/xlink" >
 <!-- draw background grid -->
 <path class="thin" style="stroke-opacity:0.2" d="M0,0
 h750v10h-750v10h750v10h-750v10
@@ -77,31 +74,27 @@ h50v-500h50v500h50
 <tspan x="730" y="453">450</tspan>
 
 </text>
-<!-- end draw grid -->
-    <defs>
-        <radialGradient id="SunGradient">
-            <stop offset="0%" stop-color="#e7a900" />
-            <stop offset="100%" stop-color="#ffe341"/>
-        </radialGradient>
-        <g id="flame">
-            <polygon points="-10,-25 10,-25 -0,-35" fill="yellow"> 
-        </g>
-        <g id="flames">
-            <use xlink:href="#flame"/>
-            <use xlink:href="#flame" transform="rotate(45)"/>
-            <use xlink:href="#flame" transform="rotate(90)"/>
-            <use xlink:href="#flame" transform="rotate(135)"/>
-            <use xlink:href="#flame" transform="rotate(180)"/>
-            <use xlink:href="#flame" transform="rotate(225)"/>
-            <use xlink:href="#flame" transform="rotate(270)"/>
-            <use xlink:href="#flame" transform="rotate(315)"/>
-        </g>
-        <g id="sun">
-            <circle cx="0" cy="0" r="20" fill="url(#SunGradient)"/>
-            <use xlink:href="#flames">
-        </g>
+<defs>
+    <g id="finish">
+        <!-- Frame + piliar lower side-->
+        <rect width="260" height="20" />
+        <rect width="20" height="250" />
+        <rect x="260" y="0" width="20" height="250" />
+        <rect x="0" y="100" width="260" height="20" />
 
-        
-    </defs>
-<use x="150" y="150" xlink:href="#sun"/>
+        <!-- Inner Pattern -->
+        <rect x="20" y="20" width="40" height="40"/>
+        <rect x="100" y="20" width="40" height="40"/>
+        <rect x="180" y="20" width="40" height="40"/>
+        <rect x="60" y="60" width="40" height="40"/>
+        <rect x="140" y="60" width="40" height="40"/>
+        <rect x="220" y="60" width="40" height="40"/>
+
+        <!-- Piliar : up side -->
+        <rect x="0" y="-20" width="20" height="50" />
+        <rect x="260" y="-20" width="20" height="50" />
+    </g>
+
+</defs>
+<use xlink:href="#finish"/>
 </svg>
