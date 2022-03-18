@@ -80,7 +80,7 @@ h50v-500h50v500h50
 <!-- BACKGROUND -->
 <!-- /////////////////////////////////////////////////// -->
   <g id="background">
-    <rect x="-400" y="-400" width="1500" height="1500" fill="cornsilk"/>
+    <rect x="-400" y="-400" width="1500" height="1500" fill="snow"/>
   </g>
 
 <!-- /////////////////////////////////////////////////// -->
@@ -153,7 +153,7 @@ h50v-500h50v500h50
       <rect x="60" y="-40" width="10" height="150" fill="grey"/> <!-- sticks -->
       <rect x="-70" y="-40" width="10" height="150" fill="grey"/> <!-- sticks -->
     </g>
-    <g id="person" transform="translate(400,550), scale(0.75)">
+    <g id="person" transform="scale(0.75)">
       <use xlink:href="#personWithoutSticks"/>
       <use xlink:href="#sticks"/>
     </g>
@@ -161,9 +161,7 @@ h50v-500h50v500h50
 <!-- /////////////////////////////////////////////////// -->
 <!-- PATH PERSON -->
 <!-- /////////////////////////////////////////////////// -->
-<g id="pathPerson" transform="translate(-50,150)">
-  <path d="M100,400 C100,200 300,200 400,400 S700,200 700,400" fill="none" stroke="black"/>
-</g>
+  <path id="pathPerson" d="M50,550 C50,450 250,350 350,550 S650,350 650,550" fill="none" stroke="black"/>
 
 <!-- /////////////////////////////////////////////////// -->
 <!-- RAMPE -->
@@ -276,7 +274,7 @@ h50v-500h50v500h50
 <!-- /////////////////////////////////////////////////// -->
   <g id="personMoving">
     <use xlink:href="#person"/>
-    <animateMotion fill="none" stroke="black"  dur="4s" repeatCount="indefinite">
+    <animateMotion calcMode="linear" keyTimes="0;0.5;1" keyPoints="0;1;0" dur="8s" repeatCount="indefinite">
       <mpath xlink:href="#pathPerson"/>
     </animateMotion>
   </g>
@@ -284,7 +282,7 @@ h50v-500h50v500h50
 </defs>
 
 <!-- <rect x="0" y="0" width="750" height="500" fill="white"/> -->
-<!-- <use xlink:href="#background"/> -->
+<use xlink:href="#background"/>
 
 <use xlink:href="#rampe"/>
 
@@ -302,7 +300,7 @@ h50v-500h50v500h50
 
 <!-- <use xlink:href="#pathTreesRight"/> -->
 <!-- <use xlink:href="#pathTreesLeft"/>  -->
-<use xlink:href="#pathPerson"/>
+<!-- <use xlink:href="#pathPerson"/> -->
 <use xlink:href="#personMoving"/>
 </svg>
 
