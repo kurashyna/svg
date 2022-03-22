@@ -77,27 +77,54 @@ h50v-500h50v500h50
 
 <defs>
 <!-- /////////////////////////////////////////////////// -->
+<!-- FINISH LINE -->
+<!-- /////////////////////////////////////////////////// -->
+<g id="finish" transform="translate(100,100)">
+        <!-- Frame + piliar lower side-->
+        <rect width="260" height="20" />
+        <rect width="20" height="250" />
+        <rect x="260" y="0" width="20" height="250" />
+        <rect x="0" y="100" width="260" height="20" />
+
+        <!-- Inner Pattern -->scolarite-informatique.iut2.univ-grenoble-alpes.fr/
+        <rect x="20" y="20" width="40" height="40"/>
+        <rect x="100" y="20" width="40" height="40"/>
+        <rect x="180" y="20" width="40" height="40"/>
+        <rect x="60" y="60" width="40" height="40"/>
+        <rect x="140" y="60" width="40" height="40"/>
+        <rect x="220" y="60" width="40" height="40"/>
+
+        <!-- Piliar : up side -->
+        <rect x="0" y="-20" width="20" height="50" />
+        <rect x="260" y="-20" width="20" height="50" />
+
+        <rect x="-20" y="250" width="320" height="1" />
+
+    </g>
+<!-- /////////////////////////////////////////////////// -->
 <!-- BACKGROUND -->
 <!-- /////////////////////////////////////////////////// -->
+<linearGradient id="grad_ground" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" style="stop-color:snow;stop-opacity:1" />
+    <stop offset="85%" style="stop-color:lightcyan;stop-opacity:1" />
+</linearGradient>
   <g id="background">
-    <rect x="-400" y="-400" width="1500" height="1500" fill="snow"/>
+    <rect x="-400" y="-400" width="1500" height="1500" fill="url(#grad_ground)"/>
   </g>
 
 <!-- /////////////////////////////////////////////////// -->
 <!-- SKY -->
 <!-- /////////////////////////////////////////////////// -->
+<linearGradient id="grad_sky" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" style="stop-color:royalblue;stop-opacity:1" />
+    <stop offset="50%" style="stop-color:#a8d3fe;stop-opacity:1" />
+</linearGradient>
   <g id="sky">
-    <rect x="-400" y="-200" width="1500" height="200" fill="deepskyblue">
+    <rect x="-400" y="-200" width="1500" height="200" fill="url(#grad_sky)">
     <animate attributeName="height" from="200" to="2000" begin="2s" dur="8s" fill="freeze"/>
-    <animate attributeName="height" from="2000" to="200" begin="12s" dur="8s" fill="freeze"/>
+    <animate id="skyEnd" attributeName="height" from="2000" to="200" begin="12s" dur="8s" fill="freeze"/>
   </rect>
   </g>
-<!-- /////////////////////////////////////////////////// -->
-<!-- GROUND -->
-<!-- /////////////////////////////////////////////////// -->
-    <g id="ground">
-      <rect x="-400" y="-400" width="1500" height="1500" fill="snow"/>
-    </g>
 
 <!-- /////////////////////////////////////////////////// -->
 <!-- SUN -->
@@ -174,10 +201,10 @@ h50v-500h50v500h50
 <!-- PERSON -->
 <!-- /////////////////////////////////////////////////// -->
     <g id="personWithoutSticks" >
-        <ellipse rx="45" ry="75"/> <!-- body -->
-        <circle cx="0" cy="-90" r="30"/> <!-- head -->
-        <ellipse cx="-20" cy="75" rx="15" ry="45" /> <!-- legs -->
-        <ellipse cx="20" cy="75" rx="15" ry="45" /> <!-- legs -->
+        <ellipse rx="45" ry="75" fill="chartreuse"/> <!-- body -->
+        <circle cx="0" cy="-90" r="30" fill="tan"/> <!-- head -->
+        <ellipse cx="-20" cy="75" rx="15" ry="45" fill="darkslategrey"/> <!-- legs -->
+        <ellipse cx="20" cy="75" rx="15" ry="45" fill="darkslategrey"/> <!-- legs -->
         <ellipse cx="50" cy="-10" rx="20" ry="45" transform="rotate(-145)"/> <!-- arms -->
         <ellipse cx="-50" cy="-10" rx="20" ry="45" transform="rotate(145)"/> <!-- arms -->
 
@@ -186,14 +213,20 @@ h50v-500h50v500h50
       <rect x="60" y="-40" width="10" height="150" fill="grey"/> <!-- sticks -->
       <rect x="-70" y="-40" width="10" height="150" fill="grey"/> <!-- sticks -->
     </g>
+    <g id="skis">
+      <ellipse cx="20" cy="110" rx="10" ry="45" fill="red" transform="rotate(20)"/>
+      <ellipse cx="-20" cy="110" rx="10" ry="45" fill="red" transform="rotate(-20)" />
+
+    </g>
     <g id="person" transform="scale(0.75)">
-      <use xlink:href="#personWithoutSticks"/>
       <use xlink:href="#sticks"/>
+      <use xlink:href="#skis"/>
+      <use xlink:href="#personWithoutSticks"/>
     </g>
     <!-- /////////////////////////////////////////////////// -->
     <!-- FALLING PERSON -->
     <!-- /////////////////////////////////////////////////// -->
-    <g id="body" fill="black">
+    <g id="body" fill="chartreuse">
         <ellipse rx="80" ry="55" />
     </g>
 
@@ -220,6 +253,17 @@ h50v-500h50v500h50
         <use x="150" y="150" xlink:href="#personFromBelow"/>
         <use x="0" y="0" xlink:href="#twoSkis"/>
     </g>
+<!-- /////////////////////////////////////////////////// -->
+<!-- VICTIM/CASUALTY -->
+<!-- /////////////////////////////////////////////////// -->
+  <g id="victim" transform="rotate(0.75) scale(0.75)">
+    <ellipse rx="45" ry="75" fill="lightpink"/> <!-- body -->
+    <circle cx="0" cy="-90" r="30" fill="tan"/> <!-- head -->
+    <ellipse cx="-20" cy="75" rx="15" ry="45" fill="lightcoral"/> <!-- legs -->
+    <ellipse cx="20" cy="75" rx="15" ry="45" fill="lightcoral"/> <!-- legs -->
+    <ellipse cx="50" cy="-10" rx="20" ry="45" transform="rotate(-145)"/> <!-- arms -->
+    <ellipse cx="-50" cy="-10" rx="20" ry="45" transform="rotate(145)"/> <!-- arms -->
+  </g>
 
 <!-- /////////////////////////////////////////////////// -->
 <!-- PATH PERSON -->
@@ -233,6 +277,8 @@ h50v-500h50v500h50
   <g id="rampe">
     <path d="M250,0 Q 300,300 -300,700" fill="none" stroke="black"/> <!-- position de départ x y, position point de contrôle x y et point d'arrivée x y -->
     <path d="M500,0 Q 450,300 900,650" fill="none" stroke="black"/> <!-- position de départ x y, position point de contrôle x y et point d'arrivée x y -->
+    <animate attributeType="CSS" attributeName="opacity" from="1" to="0" begin="skyEnd.begin" dur="1s" fill="freeze"/>
+
   </g>
 
 <!-- /////////////////////////////////////////////////// -->
@@ -252,6 +298,7 @@ h50v-500h50v500h50
       <mpath xlink:href="#pathTreesLeft"/>
     </animateMotion>
 		<animateTransform attributeName="transform" type="scale" from="1 1" to="2 2" begin="0s" dur="4s" repeatCount="indefinite"/>
+    <animate attributeType="CSS" attributeName="opacity" from="1" to="0" begin="skyEnd.begin" dur="1s" fill="freeze"/>
 	</g>
   <g id="growingMovingTreesLeft2">
     <use xlink:href="#tree"/>
@@ -262,6 +309,7 @@ h50v-500h50v500h50
     </animateMotion>
     <set attributeType="CSS" attributeName="visibility" to="hidden" begin="0s" dur="1.5s"/>
     <animateTransform attributeName="transform" type="scale" from="1 1" to="2 2" begin="1.5s" dur="4s" repeatCount="indefinite"/>
+    <animate attributeType="CSS" attributeName="opacity" from="1" to="0" begin="skyEnd.begin" dur="1s" fill="freeze"/>
 	</g>
 
   <g id="growingMovingTreesLeft3">
@@ -274,6 +322,7 @@ h50v-500h50v500h50
     </animateMotion>
     <set attributeType="CSS" attributeName="visibility" to="hidden" begin="0s" dur="3s"/>
     <animateTransform attributeName="transform" type="scale" from="1 1" to="2 2" begin="3s" dur="4s" repeatCount="indefinite"/>
+    <animate attributeType="CSS" attributeName="opacity" from="1" to="0" begin="skyEnd.begin" dur="1s" fill="freeze"/>
 	</g>
 <!-- /////////////////////////////////////////////////// -->
 <!-- RIGHT TREEEEEEEEEES ANIMATIONS-->
@@ -286,7 +335,9 @@ h50v-500h50v500h50
     <mpath xlink:href="#pathTreesRight"/>
   </animateMotion>
   <animateTransform attributeName="transform" type="scale" from="1 1" to="2 2" begin="0s" dur="4s" repeatCount="indefinite"/>
+  <animate attributeType="CSS" attributeName="opacity" from="1" to="0" begin="skyEnd.begin" dur="1s" fill="freeze"/>
 </g>
+
 <g id="growingMovingTreesRight2">
   <use xlink:href="#tree"/>
   <use xlink:href="#tree" transform="translate(200,-50)"/>
@@ -296,6 +347,7 @@ h50v-500h50v500h50
   </animateMotion>
   <set attributeType="CSS" attributeName="visibility" to="hidden" begin="0s" dur="1.5s"/>
   <animateTransform attributeName="transform" type="scale" from="1 1" to="2 2" begin="1.5s" dur="4s" repeatCount="indefinite"/>
+  <animate attributeType="CSS" attributeName="opacity" from="1" to="0" begin="skyEnd.begin" dur="1s" fill="freeze"/>
 </g>
 
 <g id="growingMovingTreesRight3">
@@ -308,6 +360,7 @@ h50v-500h50v500h50
   </animateMotion>
   <set attributeType="CSS" attributeName="visibility" to="hidden" begin="0s" dur="3s"/>
   <animateTransform attributeName="transform" type="scale" from="1 1" to="2 2" begin="3s" dur="4s" repeatCount="indefinite"/>
+  <animate attributeType="CSS" attributeName="opacity" from="1" to="0" begin="skyEnd.begin" dur="1s" fill="freeze"/>
 </g>
 
 <!-- /////////////////////////////////////////////////// -->
@@ -339,6 +392,7 @@ h50v-500h50v500h50
     <set attributeType="CSS" attributeName="visibility" to="hidden" begin="0s" dur="2s"/>
     <animate attributeType="CSS" attributeName="opacity" from="0" to="1" begin="2s" dur="3s" fill="freeze"/>
     <animateTransform attributeName="transform" type="scale" from="1 1" to="1.1 1.1" begin="5s" dur="6s" repeatCount="indefinite"/>
+    <animate attributeType="CSS" attributeName="opacity" from="1" to="0" begin="skyEnd.begin" dur="1s" fill="freeze"/>
 </g>
 <!-- /////////////////////////////////////////////////// -->
 <!-- PERSON ANIMATIONS-->
@@ -355,13 +409,28 @@ h50v-500h50v500h50
     <set attributeType="CSS" attributeName="visibility" to="hidden" begin="0s" dur="7s"/>
     <animate attributeType="CSS" attributeName="opacity" from="0" to="1" begin="7s" dur="0.5s" fill="freeze"/>
   </g>
-
+<!-- /////////////////////////////////////////////////// -->
+<!-- FINISH LINE ANIMATIONS-->
+<!-- /////////////////////////////////////////////////// -->
+  <g id="finishLine">
+    <use xlink:href="#finish"/>
+    <set attributeType="CSS" attributeName="visibility" to="hidden" begin="0s" dur="10s"/>
+  </g>
+<!-- /////////////////////////////////////////////////// -->
+<!-- VICTIM ANIMATIONS-->
+<!-- /////////////////////////////////////////////////// -->
+  <g id="victimAppearance">
+    <use xlink:href="#victim" transform="translate(600,200)"/>
+    <set attributeType="CSS" attributeName="visibility" to="hidden" begin="0s" dur="10s"/>
+    <animateTransform attributeName="transform" begin="skyEnd.end" dur="2s" type="translate" values="0,0;-200,200" fill="freeze"/>
+  </g>
 </defs>
 
  <use xlink:href="#background"/>
 
 <use xlink:href="#rampe"/>
-
+<use xlink:href="#finishLine"/>
+<use xlink:href="#victimAppearance"/>
 
 <use xlink:href="#growingMovingTreesLeft"/>
 <use xlink:href="#growingMovingTreesLeft2"/>
@@ -386,4 +455,4 @@ h50v-500h50v500h50
 </svg>
 
 <!-- faire impression de vitesse en path-->
-<!-- id.end pr les begin, faire arrêter mvt arbres quand animation de nuage finit; mettre ligne d'arrivée et personne à écraser -->
+<!-- id.end pr les begin, apparition BANG et écrasement de la victime et fin / revoir les différents timings-->
