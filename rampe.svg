@@ -89,8 +89,41 @@ h50v-500h50v500h50
   <g id="sky">
     <rect x="-400" y="-200" width="1500" height="200" fill="deepskyblue">
     <animate attributeName="height" from="200" to="2000" begin="2s" dur="8s" fill="freeze"/>
+    <animate attributeName="height" from="2000" to="200" begin="12s" dur="8s" fill="freeze"/>
   </rect>
   </g>
+<!-- /////////////////////////////////////////////////// -->
+<!-- GROUND -->
+<!-- /////////////////////////////////////////////////// -->
+    <g id="ground">
+      <rect x="-400" y="-400" width="1500" height="1500" fill="snow"/>
+    </g>
+
+<!-- /////////////////////////////////////////////////// -->
+<!-- SUN -->
+<!-- /////////////////////////////////////////////////// -->
+<radialGradient id="SunGradient">
+          <stop offset="0%" stop-color="#e7a900" />
+          <stop offset="100%" stop-color="#ffe341"/>
+      </radialGradient>
+      <g id="flame">
+          <polygon points="-10,-25 10,-25 -0,-35" fill="yellow"/>
+      </g>
+      <g id="flames">
+          <use xlink:href="#flame"/>
+          <use xlink:href="#flame" transform="rotate(45)"/>
+          <use xlink:href="#flame" transform="rotate(90)"/>
+          <use xlink:href="#flame" transform="rotate(135)"/>
+          <use xlink:href="#flame" transform="rotate(180)"/>
+          <use xlink:href="#flame" transform="rotate(225)"/>
+          <use xlink:href="#flame" transform="rotate(270)"/>
+          <use xlink:href="#flame" transform="rotate(315)"/>
+      </g>
+      <g id="sun">
+          <circle cx="0" cy="0" r="20" fill="url(#SunGradient)"/>
+          <use xlink:href="#flames"/>
+      </g>
+
 <!-- /////////////////////////////////////////////////// -->
 <!-- TREES -->
 <!-- /////////////////////////////////////////////////// -->
@@ -156,6 +189,36 @@ h50v-500h50v500h50
     <g id="person" transform="scale(0.75)">
       <use xlink:href="#personWithoutSticks"/>
       <use xlink:href="#sticks"/>
+    </g>
+    <!-- /////////////////////////////////////////////////// -->
+    <!-- FALLING PERSON -->
+    <!-- /////////////////////////////////////////////////// -->
+    <g id="body" fill="black">
+        <ellipse rx="80" ry="55" />
+    </g>
+
+    <g id="arms">
+        <circle cx="-100" cy="0" r="20"/>
+        <circle cx="100" cy="0" r="20"/>
+    </g>
+
+    <g id="personFromBelow">
+        <use xlink:href="#body"/>
+        <use xlink:href="#arms"/>
+
+    </g>
+    <g id="ski">
+        <circle cx="100" cy="55" r="10" fill="grey"/>
+        <rect width="20" height="175" x="90" y="60" fill="red"/>
+        <circle cx="100" cy="230" r="10" fill="grey"/>
+    </g>
+    <g id="twoSkis">
+        <use x="0" y="0" xlink:href="#ski"/>
+        <use x="100" y="0" xlink:href="#ski"/>
+    </g>
+    <g id="fallingPerson">
+        <use x="150" y="150" xlink:href="#personFromBelow"/>
+        <use x="0" y="0" xlink:href="#twoSkis"/>
     </g>
 
 <!-- /////////////////////////////////////////////////// -->
@@ -268,7 +331,15 @@ h50v-500h50v500h50
         <animateTransform attributeName="transform" type="scale" from="1 1" to="15 15" begin="5s" dur="5s" fill="freeze"/>
         <animate attributeType="CSS" attributeName="opacity" from="1" to="0" begin="6s" dur="2s" fill="freeze"/>
     </g>
-
+<!-- /////////////////////////////////////////////////// -->
+<!-- SUN ANIMATIONS-->
+<!-- /////////////////////////////////////////////////// -->
+<g id="sunAnimation">
+    <use xlink:href="#sun" transform="translate(-100,50)"/>
+    <set attributeType="CSS" attributeName="visibility" to="hidden" begin="0s" dur="2s"/>
+    <animate attributeType="CSS" attributeName="opacity" from="0" to="1" begin="2s" dur="3s" fill="freeze"/>
+    <animateTransform attributeName="transform" type="scale" from="1 1" to="1.1 1.1" begin="5s" dur="6s" repeatCount="indefinite"/>
+</g>
 <!-- /////////////////////////////////////////////////// -->
 <!-- PERSON ANIMATIONS-->
 <!-- /////////////////////////////////////////////////// -->
@@ -280,14 +351,13 @@ h50v-500h50v500h50
     <animate attributeType="CSS" attributeName="opacity" from="1" to="0" begin="6s" dur="0.5s" fill="freeze"/>
   </g>
   <g id="personReapparing">
-    <use xlink:href="#person" transform="translate(350,500)"/>
+    <use xlink:href="#fallingPerson" transform="translate(200,400) scale(0.75)"/>
     <set attributeType="CSS" attributeName="visibility" to="hidden" begin="0s" dur="7s"/>
     <animate attributeType="CSS" attributeName="opacity" from="0" to="1" begin="7s" dur="0.5s" fill="freeze"/>
   </g>
 
 </defs>
 
-<!-- <rect x="0" y="0" width="750" height="500" fill="white"/> -->
  <use xlink:href="#background"/>
 
 <use xlink:href="#rampe"/>
@@ -302,13 +372,18 @@ h50v-500h50v500h50
 <use xlink:href="#growingMovingTreesRight3"/>
 
 <use xlink:href="#sky"/>
+
+<use xlink:href="#sunAnimation"/>
 <use xlink:href="#cloudsAnimation"/>
 
 <!-- <use xlink:href="#pathTreesRight"/> -->
 <!-- <use xlink:href="#pathTreesLeft"/>  -->
-<use xlink:href="#pathPerson"/>
+<!-- <use xlink:href="#pathPerson"/> -->
 <use xlink:href="#personMoving"/>
 <use xlink:href="#personReapparing"/>
+
+
 </svg>
 
 <!-- faire impression de vitesse en path-->
+<!-- id.end pr les begin, faire arrêter mvt arbres quand animation de nuage finit; mettre ligne d'arrivée et personne à écraser -->
