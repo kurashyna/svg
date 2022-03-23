@@ -1,6 +1,6 @@
 <?xml version="1.0" standalone="no"?>
 <?xml-stylesheet type="text/css" href="handson.css" ?>
-<svg xmlns="http://www.w3.org/2000/svg" width="750" height="500" viewBox="-50 -50 750 750" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="500" viewBox="-50 -50 750 750" xmlns:xlink="http://www.w3.org/1999/xlink" transform="scale(2) translate(200,100)">
 <!-- draw background grid -->
 <path class="thin" style="stroke-opacity:0.2" d="M0,0
 h750v10h-750v10h750v10h-750v10
@@ -77,6 +77,37 @@ h50v-500h50v500h50
 
 <defs>
 <!-- /////////////////////////////////////////////////// -->
+<!-- BAAAAAAAAAAAAM -->
+<!-- /////////////////////////////////////////////////// -->
+  <g id="bam_piece">
+    <polygon stroke-width="4" points="100,150 120,180 100,180 130,230 100,245 140,275 100,330 170,330 175,370 240,350 245,420 285,355 345,390 375,315 420,360 420,310 505,315 480,265 520,250 490,215 540,160 460,150 467,90 385,130 370,100 335,130 280,80 255,145 220,130 200,170"/>
+  </g>
+
+  <g id="bam">
+    <use xlink:href="#bam_piece" transform="translate(3, 10)" fill="yellow"/>
+    <use xlink:href="#bam_piece" fill="red"/>
+    <use xlink:href="#bam_piece" transform="translate(-15, -10) scale(1.05)" fill="transparent" stroke="black" stroke-width="" />
+    <text
+      transform="translate(-125,125)"
+      fill="black"
+      x="250" y="150"
+      font-family="Verdana"
+      font-size="130"
+      font-weight="bold">
+      BAM!
+  </text>
+    <text
+        transform="translate(-125,125)"
+        fill="yellow"
+        x="250" y="150"
+        font-family="Verdana"
+        font-size="120"
+        font-weight="bold">
+        BAM!
+    </text>
+  </g>
+
+<!-- /////////////////////////////////////////////////// -->
 <!-- FINISH LINE -->
 <!-- /////////////////////////////////////////////////// -->
 <g id="finish" transform="translate(100,100)">
@@ -86,7 +117,7 @@ h50v-500h50v500h50
         <rect x="260" y="0" width="20" height="250" />
         <rect x="0" y="100" width="260" height="20" />
 
-        <!-- Inner Pattern -->scolarite-informatique.iut2.univ-grenoble-alpes.fr/
+        <!-- Inner Pattern -->
         <rect x="20" y="20" width="40" height="40"/>
         <rect x="100" y="20" width="40" height="40"/>
         <rect x="180" y="20" width="40" height="40"/>
@@ -241,9 +272,9 @@ h50v-500h50v500h50
 
     </g>
     <g id="ski">
-        <circle cx="100" cy="55" r="10" fill="grey"/>
+        <circle cx="100" cy="55" r="10" fill="darkred"/>
         <rect width="20" height="175" x="90" y="60" fill="red"/>
-        <circle cx="100" cy="230" r="10" fill="grey"/>
+        <circle cx="100" cy="230" r="10" fill="darkred"/>
     </g>
     <g id="twoSkis">
         <use x="0" y="0" xlink:href="#ski"/>
@@ -252,6 +283,34 @@ h50v-500h50v500h50
     <g id="fallingPerson">
         <use x="150" y="150" xlink:href="#personFromBelow"/>
         <use x="0" y="0" xlink:href="#twoSkis"/>
+    </g>
+    <!-- /////////////////////////////////////////////////// -->
+    <!-- SPEED FOR THE FALLING PERSON -->
+    <!-- /////////////////////////////////////////////////// -->
+    <g id="speedLeft1">
+      <line x1="0" y1="180" x2="0" y2="280" stroke="black" />
+      <line x1="-50" y1="100" x2="-50" y2="350" stroke="black" />
+    </g>
+    <g id="speedLeft2">
+      <line x1="30" y1="10" x2="30" y2="140" stroke="black" />
+      <line x1="-30" y1="40" x2="-30" y2="250" stroke="black" />
+    </g>
+    <g id="speedRight1">
+      <line x1="310" y1="150" x2="310" y2="280" stroke="black" />
+      <line x1="360" y1="80" x2="360" y2="350" stroke="black" />
+    </g>
+    <g id="speedRight2">
+      <line x1="330" y1="0" x2="330" y2="140" stroke="black" />
+      <line x1="380" y1="20" x2="380" y2="240" stroke="black" />
+    </g>
+
+    <g id="speedyThings1">
+      <use xlink:href="#speedRight1"/>
+      <use xlink:href="#speedLeft1"/>
+    </g>
+    <g id="speedyThings2">
+      <use xlink:href="#speedRight2"/>
+      <use xlink:href="#speedLeft2"/>
     </g>
 <!-- /////////////////////////////////////////////////// -->
 <!-- VICTIM/CASUALTY -->
@@ -278,7 +337,6 @@ h50v-500h50v500h50
     <path d="M250,0 Q 300,300 -300,700" fill="none" stroke="black"/> <!-- position de départ x y, position point de contrôle x y et point d'arrivée x y -->
     <path d="M500,0 Q 450,300 900,650" fill="none" stroke="black"/> <!-- position de départ x y, position point de contrôle x y et point d'arrivée x y -->
     <animate attributeType="CSS" attributeName="opacity" from="1" to="0" begin="skyEnd.begin" dur="1s" fill="freeze"/>
-
   </g>
 
 <!-- /////////////////////////////////////////////////// -->
@@ -407,7 +465,19 @@ h50v-500h50v500h50
   <g id="personReapparing">
     <use xlink:href="#fallingPerson" transform="translate(200,400) scale(0.75)"/>
     <set attributeType="CSS" attributeName="visibility" to="hidden" begin="0s" dur="7s"/>
-    <animate attributeType="CSS" attributeName="opacity" from="0" to="1" begin="7s" dur="0.5s" fill="freeze"/>
+    <animate id="personFalling" attributeType="CSS" attributeName="opacity" from="0" to="1" begin="7s" dur="0.5s" fill="freeze"/>
+  </g>
+  <g id="SpeedyAnimation1">
+    <use xlink:href="#speedyThings1" transform="translate(200,400) scale(0.75)"/>
+    <set attributeType="CSS" attributeName="visibility" to="hidden" begin="0s" dur="7s"/>
+    <animate id="noMoreSpeed" attributeType="CSS" attributeName="opacity" from="0" to="1" begin="personFalling.end" dur="1s" repeatCount="9"/>
+    <animate attributeType="CSS" attributeName="opacity" from="1" to="0" begin="noMoreSpeed.end" dur="1s" fill="freeze"/>
+  </g>
+  <g id="SpeedyAnimation2">
+    <use xlink:href="#speedyThings2" transform="translate(200,400) scale(0.75)"/>
+    <set attributeType="CSS" attributeName="visibility" to="hidden" begin="0s" dur="7s"/>
+    <animate attributeType="CSS" attributeName="opacity" from="0" to="1" begin="personFalling.end-1s" dur="1s" repeatCount="9"/>
+    <animate attributeType="CSS" attributeName="opacity" from="1" to="0" begin="noMoreSpeed.end" dur="1s" fill="freeze"/>
   </g>
 <!-- /////////////////////////////////////////////////// -->
 <!-- FINISH LINE ANIMATIONS-->
@@ -420,9 +490,14 @@ h50v-500h50v500h50
 <!-- VICTIM ANIMATIONS-->
 <!-- /////////////////////////////////////////////////// -->
   <g id="victimAppearance">
-    <use xlink:href="#victim" transform="translate(600,200)"/>
+    <use xlink:href="#victim" transform="translate(300,500)"/>
     <set attributeType="CSS" attributeName="visibility" to="hidden" begin="0s" dur="10s"/>
-    <animateTransform attributeName="transform" begin="skyEnd.end" dur="2s" type="translate" values="0,0;-200,200" fill="freeze"/>
+  </g>
+  <g id="bamAnimation">
+    <use xlink:href="#bam" transform="translate(-100,-100)"/>
+    <set attributeType="CSS" attributeName="visibility" to="hidden" begin="0s" dur="20s"/>
+    <animate attributeType="CSS" attributeName="opacity" from="0" to="1" begin="skyEnd.end-4s" dur="1s" fill="freeze"/>
+    <animateTransform attributeName="transform" type="scale" from="0 0" to="2 2" begin="0s" dur="2.5s" fill="freeze"/>
   </g>
 </defs>
 
@@ -431,6 +506,7 @@ h50v-500h50v500h50
 <use xlink:href="#rampe"/>
 <use xlink:href="#finishLine"/>
 <use xlink:href="#victimAppearance"/>
+
 
 <use xlink:href="#growingMovingTreesLeft"/>
 <use xlink:href="#growingMovingTreesLeft2"/>
@@ -450,9 +526,8 @@ h50v-500h50v500h50
 <!-- <use xlink:href="#pathPerson"/> -->
 <use xlink:href="#personMoving"/>
 <use xlink:href="#personReapparing"/>
-
+<use xlink:href="#SpeedyAnimation1"/>
+<use xlink:href="#SpeedyAnimation2"/>
+<use xlink:href="#bamAnimation"/>
 
 </svg>
-
-<!-- faire impression de vitesse en path-->
-<!-- id.end pr les begin, apparition BANG et écrasement de la victime et fin / revoir les différents timings-->
