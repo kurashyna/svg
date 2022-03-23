@@ -494,7 +494,7 @@ h50v-500h50v500h50
     <set attributeType="CSS" attributeName="visibility" to="hidden" begin="0s" dur="10s"/>
   </g>
   <g id="bamAnimation">
-    <use xlink:href="#bam" transform="translate(-100,-100)"/>
+    <use xlink:href="#bam" transform="translate(-150,-80)"/>
     <set attributeType="CSS" attributeName="visibility" to="hidden" begin="0s" dur="20s"/>
     <animate attributeType="CSS" attributeName="opacity" from="0" to="1" begin="skyEnd.end-4s" dur="1s" fill="freeze"/>
     <animateTransform attributeName="transform" type="scale" from="0 0" to="2 2" begin="0s" dur="2.5s" fill="freeze"/>
@@ -521,9 +521,6 @@ h50v-500h50v500h50
 <use xlink:href="#sunAnimation"/>
 <use xlink:href="#cloudsAnimation"/>
 
-<!-- <use xlink:href="#pathTreesRight"/> -->
-<!-- <use xlink:href="#pathTreesLeft"/>  -->
-<!-- <use xlink:href="#pathPerson"/> -->
 <use xlink:href="#personMoving"/>
 <use xlink:href="#personReapparing"/>
 <use xlink:href="#SpeedyAnimation1"/>
